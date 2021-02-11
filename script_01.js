@@ -3,43 +3,63 @@
 /*
 0. a+b / a-b/ a*b / a/b  // ergebnis c
 1. Dateneingabe + -überprüfung :: 
-2. Auswahl Rechenart :: 
+2. Auswahl Rechenart :: check
 3. Fkt. Grundrechenarten :: check
 4. Ausgabe in Konsole :: check
 */
 
 
 
-// Test / Auswahl Rechenart
-rechner("+",10,4);
-rechner("-",10,4);
-rechner("*",10,4);
-rechner("/",10,4);
-rechner("/",10,0);
-rechner("gf",10,4);
+ausgabe(rechner(getOp(), getZahl("1"), getZahl("2")));
 
-function rechner(op,a,b) {
+
+// Modul: Operand eingeben | Test:
+
+//ausgabe(getOp());
+function getOp() {
+    let op = prompt("Bitte +|-|*|/ eingeben.");
+    // To Do: Plausibilität!
+    return op;
+}
+
+
+// Modul: Zahl 1 eingabe | Test:
+//ausgabe(getZahl("1"));
+//ausgabe(getZahl("2"));
+function getZahl(numStr) {
+    let zahl = parseInt(prompt("Bitte Zahl " + numStr + " eingeben."));
+    while (isNaN(zahl)) {
+        zahl = parseInt(prompt("Das ist keine Zahl. Bitte nochmal:"));
+    }
+    return zahl;
+}
+
+
+// Modul: Auswahl Rechenart | Test:
+
+// ausgabe(rechner("+", 10, 4));
+// ausgabe(rechner("-", 10, 4));
+// ausgabe(rechner("*", 10, 4));
+// ausgabe(rechner("/", 10, 4));
+// ausgabe(rechner("/", 10, 0));
+// ausgabe(rechner("gf", 10, 4));
+
+function rechner(op, a, b) {
 
     switch (op) {
         case "+":
-            ausgabe(addieren(a,b));
-            break;
+            return addieren(a,b);
         case "-":
-            ausgabe(subtrahieren(a,b));
-            break;
+            return subtrahieren(a,b);
         case "*":
-            ausgabe(multiplizieren(a,b));
-            break;
+            return multiplizieren(a,b);
         case "/":
-            ausgabe(dividieren(a,b));
-            break;
+            return dividieren(a,b);
 
         default:
-            ausgabe("irgendwas ging schief!");
-            break;
+            return "Irgendwas ging schief!";
     }
 }
-
 
 // Modul: Addition a+b | Test:
 //ausgabe(addieren(2,3));
