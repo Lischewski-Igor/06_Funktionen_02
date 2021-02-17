@@ -8,20 +8,29 @@
 4. Ausgabe in Konsole :: check
 */
 
-
-
-ausgabe(rechner(getOp(), getZahl("1"), getZahl("2")));
-
+// Modul: Gesamtfunktionalität | Test:
+start()
+function start() {
+    ausgabe(rechner(getOp(), getZahl("1"), getZahl("2")));
+}
 
 // Modul: Operand eingeben | Test:
-
-//ausgabe(getOp());
+// ausgabe(getOp());
 function getOp() {
     let op = prompt("Bitte +|-|*|/ eingeben.");
-    // To Do: Plausibilität!
+    while (!checkOp(op)) {
+        op = prompt("Bitte einen korrekten Operator eingeben.")
+    }
     return op;
 }
 
+function checkOp(checkStr) {
+    // ODER (OR) - Verknüpfungen
+    return  (checkStr == "+") ||
+            (checkStr == "-") ||
+            (checkStr == "*") ||
+            (checkStr == "/");
+}
 
 // Modul: Zahl 1 eingabe | Test:
 //ausgabe(getZahl("1"));
@@ -33,7 +42,6 @@ function getZahl(numStr) {
     }
     return zahl;
 }
-
 
 // Modul: Auswahl Rechenart | Test:
 
